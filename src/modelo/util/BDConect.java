@@ -14,7 +14,17 @@ public class BDConect {
 	private BDConect() {
 		
 		String user ="root";
-		String pass = "P@ssword";
+//		String pass = "P@ssword";
+		String pass = "rootpw";
+		
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//			String dbURL = "jdbc:mysql://localhost:3306/cines" 
+//				    + "?verifyServerCertificate=true" 
+//				    + "&useSSL=false"
+//				    + "&requireSSL=false";
+//            conexion = DriverManager.getConnection(dbURL, user, pass);
+//		} 
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

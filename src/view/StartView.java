@@ -6,8 +6,11 @@ import java.io.InputStreamReader;
 import java.util.Enumeration;
 import java.util.Iterator;
 
+import modelo.cines.CinesDelete;
 import negocio.beans.CineBean;
 import negocio.controlador.Cinesa;
+import view.cines.CreateCineView;
+import view.cines.DeleteCineView;
 import view.cines.ModificarCineView;
 
 public class StartView {
@@ -39,6 +42,8 @@ public class StartView {
 			System.out.println("_____________________");
 			System.out.println("1) Modificar Cine");
 			System.out.println("2) Lista de Cines");
+			System.out.println("3) Crear Cine");
+			System.out.println("4) Eliminar Cine");
 			System.out.println("\n");
 			System.out.println("0) SALIR");
 			numero = Integer.parseInt (br.readLine());
@@ -47,6 +52,8 @@ public class StartView {
 			
 				case 1: modificarCine(); break;
 				case 2: listarCines(); break;
+				case 3: crearCine(); break;
+				case 4: deleteCines(); break;
 			}
 		}
 	}
@@ -67,6 +74,25 @@ public class StartView {
 			CineBean unCine = listado.next();
 			System.out.println("["+unCine.getIdCine()+"] "+unCine.getNombre());
 		}
+	}
+	
+	private void deleteCines() throws NumberFormatException, IOException {
+		Iterator<CineBean> listado =  cines.getCines();
+		while(listado.hasNext()) {
+			
+			CineBean unCine = listado.next();
+			System.out.println("["+unCine.getIdCine()+"] "+unCine.getNombre());
+		}
+		
+		System.out.println("Seleccione el ID del cine que quiere modificar");
+		int numero = Integer.parseInt (br.readLine());
+		
+		CineBean unCine = cines.getCine(numero);
+		 DeleteCineView.BorrarCine(unCine);
+		
+
+		
+		
 	}
 
 
@@ -96,6 +122,11 @@ public class StartView {
 		CineBean unCine = cines.getCine(numero);
 		ModificarCineView.modificarCine(unCine);
 		
+	}
+	
+	
+	private void crearCine() throws IOException {
+		CreateCineView.createCine();
 	}
 	
 }
